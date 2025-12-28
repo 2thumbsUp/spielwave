@@ -18,6 +18,10 @@ import {
   deleteThread 
 } from './services/supabase';
 import { getCurrentUser, signIn, signUp, signOut, onAuthStateChange } from './services/auth';
+import { Terms } from './pages/Terms';
+import { Privacy } from './pages/Privacy';
+import { Guidelines } from './pages/Guidelines';
+import { Disclaimer } from './pages/Disclaimer';
 
 // Home Feed Component
 function HomeFeed({ 
@@ -425,8 +429,8 @@ function AppContent() {
                     New Thread
                   </button>
                   <div className="flex items-center gap-2">
-                    <div className="px-3 py-2 bg-gray-100 rounded-lg">
-                      <span className="text-sm font-medium text-gray-700">
+                    <div className="px-3 py-2 bg-gray-100 rounded-lg max-w-[120px] overflow-hidden">
+                      <span className="text-sm font-medium text-gray-700 truncate block">
                         @{currentUser.username}
                       </span>
                     </div>
@@ -484,6 +488,10 @@ function AppContent() {
             />
           } 
         />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/guidelines" element={<Guidelines />} />
+        <Route path="/disclaimer" element={<Disclaimer />} />
       </Routes>
 
       {/* Auth Modal */}
@@ -530,6 +538,27 @@ function AppContent() {
                 minLength={6}
                 className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
               />
+
+              {authMode === 'signup' && (
+                <label className="flex items-start gap-2 text-sm text-gray-700">
+                  <input
+                    type="checkbox"
+                    required
+                    className="mt-1"
+                  />
+                  <span>
+                    By signing up, you agree to our{' '}
+                    <a href="/terms" target="_blank" className="text-blue-600 hover:text-blue-700 underline">
+                      Terms of Service
+                    </a>{' '}
+                    and{' '}
+                    <a href="/privacy" target="_blank" className="text-blue-600 hover:text-blue-700 underline">
+                      Privacy Policy
+                    </a>
+                  </span>
+                </label>
+              )}
+
               <button
                 type="submit"
                 className="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold transition-colors"
@@ -619,6 +648,25 @@ function AppContent() {
           </div>
         </div>
       )}
+
+      {/* Footer */}
+      <footer className="bg-white border-t border-gray-200 mt-auto">
+        <div className="max-w-6xl mx-auto px-4 py-6">
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600">
+            <a href="/terms" className="hover:text-blue-600 transition-colors">Terms</a>
+            <span className="text-gray-300">|</span>
+            <a href="/privacy" className="hover:text-blue-600 transition-colors">Privacy</a>
+            <span className="text-gray-300">|</span>
+            <a href="/guidelines" className="hover:text-blue-600 transition-colors">Guidelines</a>
+            <span className="text-gray-300">|</span>
+            <a href="/disclaimer" className="hover:text-blue-600 transition-colors">Disclaimer</a>
+            <span className="text-gray-300">|</span>
+            <a href="mailto:contact@spielwave.com" className="hover:text-blue-600 transition-colors">Contact</a>
+            <span className="text-gray-300">|</span>
+            <span className="text-gray-500">© 2025 SpielWave</span>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
