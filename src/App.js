@@ -396,15 +396,17 @@ function AppContent() {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 z-50 shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-3">
-          <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center justify-between gap-2">
+            {/* Logo */}
             <h1 
               onClick={() => navigate('/')}
-              className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent cursor-pointer"
+              className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent cursor-pointer flex-shrink-0"
             >
               SpielWave
             </h1>
 
-            <div className="flex-1 max-w-xl">
+            {/* Search - Hide on mobile when signed in */}
+            <div className={`flex-1 max-w-xl ${currentUser ? 'hidden sm:block' : ''}`}>
               <div className="relative">
                 <input
                   type="text"
@@ -418,30 +420,24 @@ function AppContent() {
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
+            {/* Auth buttons */}
+            <div className="flex items-center gap-2 flex-shrink-0">
               {currentUser ? (
                 <>
                   <button
                     onClick={() => setShowNewThread(true)}
-                    className="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-5 py-2 rounded-lg font-semibold transition-all shadow-sm hover:shadow-md text-sm"
+                    className="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-3 sm:px-5 py-2 rounded-lg font-semibold transition-all shadow-sm hover:shadow-md text-sm"
                   >
                     <Plus size={18} />
-                    New Thread
+                    <span className="hidden sm:inline">New Thread</span>
                   </button>
-                  <div className="flex items-center gap-2">
-                    <div className="px-3 py-2 bg-gray-100 rounded-lg max-w-[120px] overflow-hidden">
-                      <span className="text-sm font-medium text-gray-700 truncate block">
-                        @{currentUser.username}
-                      </span>
-                    </div>
-                    <button
-                      onClick={handleSignOut}
-                      className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
-                      title="Sign Out"
-                    >
-                      <LogOut size={18} className="text-gray-600" />
-                    </button>
-                  </div>
+                  <button
+                    onClick={handleSignOut}
+                    className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                    title="Sign Out"
+                  >
+                    <LogOut size={18} className="text-gray-600" />
+                  </button>
                 </>
               ) : (
                 <button
