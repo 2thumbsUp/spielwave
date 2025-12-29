@@ -73,7 +73,7 @@ function HomeFeed({
   const filteredThreads = getFilteredThreads();
 
   return (
-    <main className="pt-20 pb-8">
+    <main className="pt-24 pb-8">
       <div className="max-w-6xl mx-auto px-4">
         {/* Filters */}
         <div className="mb-6">
