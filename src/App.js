@@ -37,7 +37,8 @@ function HomeFeed({
   userVotes, 
   handleVote, 
   handleDeleteThread,
-  onThreadClick 
+  onThreadClick,
+  setShowAuth  // ADD THIS PROP - needed for "Sign Up" button
 }) {
   const getFilteredThreads = () => {
     let filtered = threads;
@@ -74,9 +75,60 @@ function HomeFeed({
 
   return (
     <main className="pt-24 pb-8">
+      {/* ========== HERO SECTION ========== */}
+      <div className="bg-gradient-to-br from-blue-50 to-orange-50 border-b border-gray-200 py-8 sm:py-12 -mt-8">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Voice Discussions with Agree/Disagree Voting
+          </h2>
+          <p className="text-lg text-gray-600 mb-4 max-w-2xl mx-auto">
+            SpielWave is a discussion platform where you share your takes through{' '}
+            <span className="font-semibold text-orange-600">voice</span>, and others respond with{' '}
+            <span className="font-semibold text-green-600">Agree</span> or{' '}
+            <span className="font-semibold text-red-600">Disagree</span>. 
+            See if your opinion builds consensus or sparks controversy.
+          </p>
+    
+          {/* NEW: Why Listen? */}
+          <p className="text-md text-gray-700 mb-6 max-w-2xl mx-auto font-medium">
+            <span className="text-blue-600">Why listen?</span> Voice adds nuance text can't capture—tone, 
+            emotion, and personality make debates more human and engaging.
+          </p>
+    
+          <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-700 mb-4">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white text-lg">🎙️</div>
+              <span>Record voice threads</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-lg">👍</div>
+              <span>Vote Agree/Disagree</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-lg">💬</div>
+              <span>Reply with voice</span>
+            </div>
+          </div>
+    
+          {!currentUser && (
+            <button
+              onClick={() => setShowAuth(true)}
+              className="mt-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg"
+            >
+              Sign Up to Start Recording
+            </button>
+          )}
+    
+          <p className="text-sm text-gray-500 mt-4 italic">
+            Love podcasts and audio? SpielWave is for you. Prefer reading? Browse freely—sign up only when you're ready to join the conversation! 😊
+          </p>
+        </div>
+      </div>
+      {/* ========== END HERO SECTION ========== */}
+
       <div className="max-w-6xl mx-auto px-4">
         {/* Filters */}
-        <div className="mb-6">
+        <div className="mb-6 mt-8">
           <CategoryFilter selected={selectedCategory} onChange={setSelectedCategory} />
         </div>
 
@@ -147,7 +199,6 @@ function HomeFeed({
                       disagrees: 0,
                       replies: 0
                     },
-                    // FIX: Add 'Z' to force UTC parsing
                     createdAt: new Date(thread.created_at + 'Z').getTime(),
                     isTrending: thread.is_trending || false
                   }}
@@ -472,6 +523,7 @@ function AppContent() {
               handleVote={handleVote}
               handleDeleteThread={handleDeleteThread}
               onThreadClick={handleThreadClick}
+              setShowAuth={setShowAuth}
             />
           } 
         />
