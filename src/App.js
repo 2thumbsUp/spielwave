@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { Search, TrendingUp, Plus, X, LogIn, LogOut } from 'lucide-react';
 import { ThreadCard } from './components/thread/ThreadCard';
 import { CategoryFilter } from './components/layout/CategoryFilter';
@@ -22,6 +22,8 @@ import { Terms } from './pages/Terms';
 import { Privacy } from './pages/Privacy';
 import { Guidelines } from './pages/Guidelines';
 import { Disclaimer } from './pages/Disclaimer';
+import ReactGA from 'react-ga4';
+ReactGA.initialize('G-TPV6R4SL4H');
 
 // Home Feed Component
 function HomeFeed({ 
@@ -230,6 +232,11 @@ function HomeFeed({
 // Main App Component
 function AppContent() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: location.pathname });
+  }, [location]);
   
   const [currentUser, setCurrentUser] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
