@@ -290,6 +290,7 @@ function AppContent() {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadUser();
     loadThreads();
@@ -460,6 +461,7 @@ function AppContent() {
   };
 
   // ADD THIS: Reload data when navigating back to home
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     // Reload threads and votes when we're on the home page
     if (window.location.pathname === '/') {

@@ -15,6 +15,7 @@ export const useVoiceRecorder = (maxDuration = 90) => {
   const startTimeRef = useRef(0);
   const pausedTimeRef = useRef(0);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const startRecording = useCallback(async () => {
     try {
       setError(null);

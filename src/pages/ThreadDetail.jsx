@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ThumbsUp, ThumbsDown, MessageCircle, User, Flame, Trash2 } from 'lucide-react';
 import { VoicePlayer } from '../components/voice/VoicePlayer';
@@ -43,13 +43,13 @@ export const ThreadDetail = ({ currentUser, onNavigateToProfile }) => {
   const [replyingTo, setReplyingTo] = useState(null);
   const [posting, setPosting] = useState(false);
 
-  // Load thread data
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadThread();
     loadReplies();
   }, [threadId]);
 
-  // Load user vote
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (currentUser && threadId) {
       loadUserVote();

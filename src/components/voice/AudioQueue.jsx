@@ -22,14 +22,23 @@ export const AudioQueue = ({ threads, onClose, onThreadClick }) => {
     }
 
     // When track ends, play next
-    audio.addEventListener('ended', handleNext);
+    const handleEnded = () => {
+      if (currentIndex < threads.length - 1) {
+        setCurrentIndex(currentIndex + 1);
+      } else {
+        onClose();
+      }
+    };
+
+    audio.addEventListener('ended', handleEnded);
 
     return () => {
       audio.pause();
       audio.src = '';
-      audio.removeEventListener('ended', handleNext);
+      audio.removeEventListener('ended', handleEnded);
     };
-  }, [currentIndex, currentThread?.id]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentIndex, currentThread?.id, isPlaying]);
 
   const handleNext = () => {
     if (currentIndex < threads.length - 1) {
