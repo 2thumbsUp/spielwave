@@ -17,6 +17,7 @@ import {
   getUserVotes,
   deleteThread 
 } from './services/supabase';
+import { AudioQueue } from './components/voice/AudioQueue';
 import { getCurrentUser, signIn, signUp, signOut, onAuthStateChange } from './services/auth';
 import { Terms } from './pages/Terms';
 import { Privacy } from './pages/Privacy';
@@ -43,6 +44,9 @@ function HomeFeed({
   setShowAuth,  // ADD THIS PROP - needed for "Sign Up" button
   setShowNewThread
 }) {
+
+  const [isAutoplayActive, setIsAutoplayActive] = useState(false);
+
   const getFilteredThreads = () => {
     let filtered = threads;
 
@@ -117,8 +121,7 @@ function HomeFeed({
           <div className="flex flex-wrap justify-center gap-4 mb-4">
             <button
               onClick={() => {
-                // TODO: Implement "Start Listening" - scroll to threads and start autoplay
-                window.scrollTo({ top: 600, behavior: 'smooth' });
+                setIsAutoplayActive(true);
               }}
               className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg"
             >
@@ -246,6 +249,15 @@ function HomeFeed({
           </>
         )}
       </div>
+
+      {/* Autoplay Queue */}
+      {isAutoplayActive && filteredThreads.length > 0 && (
+        <AudioQueue
+          threads={filteredThreads}
+          onClose={() => setIsAutoplayActive(false)}
+          onThreadClick={onThreadClick}
+        />
+      )}
     </main>
   );
 }
