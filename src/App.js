@@ -89,7 +89,7 @@ function HomeFeed({
             Listen to opinions, not endless feeds
           </h2>
           <p className="text-lg text-gray-600 mb-4 max-w-2xl mx-auto">
-            Short voice takes you can listen to anytime.
+            Micro-podcasts you can listen to anytime.
             No essays. No doomscrolling. Just press play.
           </p>
 
@@ -101,7 +101,7 @@ function HomeFeed({
           <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-700 mb-6">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-lg">▶️</div>
-              <span>Listen to takes</span>
+              <span>Listen</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-lg">👍</div>
