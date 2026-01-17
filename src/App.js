@@ -752,6 +752,15 @@ function AppContent() {
             <span className="text-gray-300">|</span>
             <a href="mailto:contact@spielwave.com" className="hover:text-blue-600 transition-colors">Contact</a>
             <span className="text-gray-300">|</span>
+            <a 
+              href="https://buymeacoffee.com/SpielWave" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-blue-600 transition-colors flex items-center gap-1"
+            >
+              ☕ Support SpielWave
+            </a>
+            <span className="text-gray-300">|</span>
             <span className="text-gray-500">© 2025 SpielWave</span>
           </div>
         </div>
