@@ -67,6 +67,9 @@ export const ThreadCard = ({ thread, onAgree, onDisagree, userVote, currentUserI
       {/* Content */}
       {thread.contentType === 'voice' && thread.content?.audioUrl && (
         <div className="mb-3">
+          <div className="text-xs text-gray-500 uppercase font-semibold mb-2 flex items-center gap-1">
+            🎧 Audio Take
+          </div>
           <VoicePlayer 
             audioUrl={thread.content.audioUrl} 
             duration={thread.content.duration} 

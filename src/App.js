@@ -113,6 +113,10 @@ function HomeFeed({
             </div>
           </div>
 
+          <p className="text-sm text-gray-600 mb-6 max-w-2xl mx-auto font-medium">
+            Voice-only platform, all discussions are audio, no text posts
+          </p>
+
           <p className="text-md text-gray-600 mb-6 max-w-2xl mx-auto">
             Heard something interesting? Tap Agree, Disagree, or reply with your own voice.
           </p>

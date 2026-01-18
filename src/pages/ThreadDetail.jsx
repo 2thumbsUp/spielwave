@@ -323,9 +323,14 @@ export const ThreadDetail = ({ currentUser, onNavigateToProfile }) => {
 
   return (
     <div className="min-h-screen bg-gray-50 pb-8">
+      {/* BACK BUTTON HEADER - STICKY AT TOP */}
       <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="max-w-4xl mx-auto px-4 py-4">
-          <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors">
+          <button 
+            onClick={() => navigate(-1)} 
+            aria-label="Go back to previous page"
+            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+          >
             <ArrowLeft size={20} />
             <span className="font-medium">Back</span>
           </button>
@@ -429,12 +434,17 @@ export const ThreadDetail = ({ currentUser, onNavigateToProfile }) => {
 
         <div className="mt-8">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-bold text-gray-900">Replies ({replies.length})</h2>
+            <div>
+              <h2 className="text-xl font-bold text-gray-900">Replies ({replies.length})</h2>
+              <p className="text-sm text-gray-500 mt-1">Voice replies only, no typing needed</p>
+            </div>
             {currentUser && !showReplyRecorder && (
-              <button onClick={() => { setReplyingTo(null); setShowReplyRecorder(true); }}
+              <button
+                onClick={() => { setReplyingTo(null); setShowReplyRecorder(true); }}
+                aria-label="Record voice reply"
                 className="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-5 py-2 rounded-lg font-semibold transition-all shadow-sm text-sm">
                 <MessageCircle size={18} />
-                Add Reply
+                Add Voice Reply
               </button>
             )}
           </div>
