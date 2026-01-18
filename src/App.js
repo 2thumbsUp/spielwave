@@ -81,7 +81,7 @@ function HomeFeed({
   const filteredThreads = getFilteredThreads();
 
   return (
-    <main className="pt-24 pb-8">
+    <main className="pt-24 pb-8" role="main" aria-label="Home feed">
       {/* ========== HERO SECTION ========== */}
       <div className="bg-gradient-to-br from-blue-50 to-orange-50 border-b border-gray-200 py-8 sm:py-12 -mt-8">
         <div className="max-w-4xl mx-auto px-4 text-center">
@@ -123,6 +123,7 @@ function HomeFeed({
               onClick={() => {
                 setIsAutoplayActive(true);
               }}
+              aria-label="Start listening to audio threads"
               className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg"
             >
               ▶ Start Listening
@@ -131,6 +132,7 @@ function HomeFeed({
             {!currentUser ? (
               <button
                 onClick={() => setShowAuth(true)}
+                aria-label="Sign up to record your audio take"
                 className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg"
               >
                 🎙️ Record a Take
@@ -138,6 +140,7 @@ function HomeFeed({
             ) : (
               <button
                 onClick={() => setShowNewThread(true)}
+                aria-label="Record a new voice thread"
                 className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg"
               >
                 🎙️ Record a Take
@@ -507,6 +510,7 @@ function AppContent() {
                   placeholder="Search threads..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  aria-label="Search voice threads"
                   className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500"
                 />
                 <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
@@ -519,6 +523,7 @@ function AppContent() {
                 <>
                   <button
                     onClick={() => setShowNewThread(true)}
+                    aria-label="Create new voice thread"
                     className="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-3 sm:px-5 py-2 rounded-lg font-semibold transition-all shadow-sm hover:shadow-md text-sm"
                   >
                     <Plus size={18} />
@@ -535,6 +540,7 @@ function AppContent() {
               ) : (
                 <button
                   onClick={() => setShowAuth(true)}
+                  aria-label="Sign in or create account"
                   className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold transition-colors text-sm"
                 >
                   <LogIn size={18} />
@@ -595,6 +601,7 @@ function AppContent() {
               </h2>
               <button
                 onClick={() => setShowAuth(false)}
+                aria-label="Close sign in dialog"
                 className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
               >
                 <X size={24} className="text-gray-500" />
@@ -609,6 +616,7 @@ function AppContent() {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   required
+                  aria-label="Choose a username"
                   className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
                 />
               )}
@@ -618,6 +626,7 @@ function AppContent() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                aria-label="Email address"
                 className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
               />
               <input
@@ -627,6 +636,7 @@ function AppContent() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={6}
+                aria-label="Password (minimum 6 characters)"
                 className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
               />
 
@@ -687,6 +697,7 @@ function AppContent() {
                       setNewThreadCategory('');
                     }
                   }}
+                  aria-label="Close new thread dialog"
                   className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
                   disabled={creating}
                 >
