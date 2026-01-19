@@ -322,9 +322,9 @@ export const ThreadDetail = ({ currentUser, onNavigateToProfile }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-8">
+    <div className="min-h-screen bg-gray-50 pb-8 pt-20">
       {/* BACK BUTTON HEADER - STICKY AT TOP */}
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
+      <div className="bg-white border-b border-gray-200 sticky top-10 z-40">
         <div className="max-w-4xl mx-auto px-4 py-4">
           <button 
             onClick={() => navigate(-1)} 
