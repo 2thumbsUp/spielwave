@@ -86,11 +86,11 @@ function HomeFeed({
       <div className="bg-gradient-to-br from-blue-50 to-orange-50 border-b border-gray-200 py-8 sm:py-12 -mt-8">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Listen to opinions, not endless feeds
+            Short voice takes on the questions everyone's thinking about
           </h2>
           <p className="text-lg text-gray-600 mb-4 max-w-2xl mx-auto">
-            Micro-podcasts you can listen to anytime.
-            No essays. No doomscrolling. Just press play.
+            Listen to authentic perspectives in people's own voices. 
+            Share your take, hear opposing views, discover nuance.
           </p>
 
           {/* Why Listen? */}
