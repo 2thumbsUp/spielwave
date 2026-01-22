@@ -736,7 +736,7 @@ function AppContent() {
                   disabled={creating}
                   className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-gray-900 disabled:opacity-50"
                 >
-                  <option value="">Select category...</option>
+                  <option value="">Select mode...</option>
                   {CATEGORIES.map(cat => (
                     <option key={cat.id} value={cat.id}>
                       {cat.icon} {cat.name}
